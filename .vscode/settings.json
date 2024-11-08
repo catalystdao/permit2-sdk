@@ -12,7 +12,12 @@
     "./sdks/uniswapx-sdk",
     "./sdks/universal-router-sdk",
     "./sdks/v2-sdk",
-    "./sdks/v3-sdk",
+    "./sdks/v3-sdk"
   ],
-  "testing.openTesting": "neverOpen"
+  "testing.openTesting": "neverOpen",
+  "wake.compiler.solc.remappings": [
+    "ds-test/=lib/forge-std/lib/ds-test/src/",
+    "forge-std/=lib/forge-std/src/",
+    "permit2/=permit2/"
+  ]
 }
