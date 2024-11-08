@@ -1,41 +1,41 @@
 {
-  "name": "sdks",
-  "version": "0.0.0",
-  "dependencies": {
-    "@babel/runtime": "7.18.9",
-    "@manypkg/cli": "^0.19.2",
-    "@semantic-release/exec": "6.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.62",
-    "danger": "11.2.6",
-    "eslint": "^7.8.0",
-    "eslint-plugin-prettier": "^3.4.1",
-    "husky": "^8.0.3",
-    "semantic-release": "^20.1.0",
-    "semantic-release-monorepo": "7.0.5",
-    "syncpack": "^8.5.14",
-    "turbo": "1.10.16"
-  },
-  "engines": {
-    "node": ">=10",
-    "yarn": ">=3.2.3"
-  },
-  "packageManager": "yarn@3.2.3",
-  "private": true,
-  "scripts": {
-    "g:check:deps:mismatch": "manypkg check",
-    "g:build": "turbo run build",
-    "g:lint": "turbo run lint",
-    "g:release": "turbo run release --concurrency=1 --continue",
-    "g:test": "turbo run test",
-    "g:typecheck": "turbo run typecheck",
-    "sdk": "yarn workspace",
-    "postinstall": "husky"
-  },
-  "workspaces": [
-    "sdks/*",
-    "sdks/uniswapx-sdk/integration"
+  "name": "@uniswap/permit2-sdk",
+  "description": "An sdk for interacting with permit2.",
+  "repository": "https://github.com/Uniswap/sdks.git",
+  "keywords": [
+    "uniswap",
+    "ethereum"
   ],
-  "resolutions": {
-    "@manypkg/cli@^0.19.2": "patch:@manypkg/cli@npm%3A0.19.2#./.yarn/patches/@manypkg-cli-npm-0.19.2-ea52ff91d4.patch"
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdx build",
+    "interop": "yarn node writeInterop.js",
+    "lint": "prettier --check src/",
+    "release": "semantic-release",
+    "start": "tsdx watch",
+    "test": "tsdx test --testPathIgnorePatterns=/permit2/"
+  },
+  "dependencies": {
+    "ethers": "^6.13.4",
+    "tiny-invariant": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "prettier": "^2.4.1",
+    "tsdx": "^0.14.1"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

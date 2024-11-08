@@ -11,3 +11,11 @@ node_modules
 
 # Intellij IDEA artifacts
 .idea/
+
+#build 
+dist
+out
+cache
+
+#dependencies
+node_modules
